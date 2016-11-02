@@ -4,8 +4,8 @@ if ($build.deploys)
     $build.deploys | ForEach {
       Add-Type -Assembly System.IO.Compression.FileSystem
       $compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
-      $sourcedir = $(Build.ArtifactStagingDirectory) + "\" + $_.name
-      $zipfilename = $(Build.ArtifactStagingDirectory) + "\" + $_.name + ".zip"
+      $sourcedir = $env:BUILD_ARTIFACTSTAGINGDIRECTORY + "\" + $_.name
+      $zipfilename = $env:BUILD_ARTIFACTSTAGINGDIRECTORY + "\" + $_.name + ".zip"
       Remove-Item $zipfilename
       [System.IO.Compression.ZipFile]::CreateFromDirectory($sourcedir, $zipfilename, $compressionLevel, $false)
         if ($LASTEXITCODE -eq 1)
