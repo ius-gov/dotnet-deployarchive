@@ -6,7 +6,6 @@ if ($build.deploys)
       $compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
       $sourcedir = $env:BUILD_ARTIFACTSTAGINGDIRECTORY + "\" + $_.name
       $zipfilename = $env:BUILD_ARTIFACTSTAGINGDIRECTORY + "\" + $_.name + ".zip"
-      Remove-Item $zipfilename
       [System.IO.Compression.ZipFile]::CreateFromDirectory($sourcedir, $zipfilename, $compressionLevel, $false)
         if ($LASTEXITCODE -eq 1)
         {
