@@ -11,7 +11,7 @@ function CreateZip {
   [System.IO.Compression.ZipFile]::CreateFromDirectory($sourcedir, $zipfilename, $compressionLevel, $false)
   if ($LASTEXITCODE -eq 1)
   {
-    Write-Host "Error build project $_"
+    Write-Host "Error build project $name"
     exit 1
   }
 }
